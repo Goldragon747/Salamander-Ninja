@@ -1,0 +1,89 @@
+import React from 'react';
+import './textures.css';
+import * as texture from './texture.jsx';
+export default props => {
+    var handleUpdate = props.update;
+    console.log("handleUpdate");
+    return (<div className="dropdown-list-container">
+        <svg className="texture-item svg-texture-none" onClick={() => handleUpdate(texture.none.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-graph-paper" onClick={() => handleUpdate(texture.graphPaper.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-texture" onClick={() => handleUpdate(texture.texture.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-formal-invitation" onClick={() => handleUpdate(texture.formalInvitation.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-topography" onClick={() => handleUpdate(texture.topography.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-hexagons" onClick={() => handleUpdate(texture.hexagons.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-hideout" onClick={() => handleUpdate(texture.hideout.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-brick-wall" onClick={() => handleUpdate(texture.brickWall.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-squares" onClick={() => handleUpdate(texture.squares.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-falling-triangles" onClick={() => handleUpdate(texture.fallingTriangles.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-pie-factory" onClick={() => handleUpdate(texture.pieFactory.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-stripes" onClick={() => handleUpdate(texture.stripes.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-charlie-brown" onClick={() => handleUpdate(texture.charlieBrown.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-autumn" onClick={() => handleUpdate(texture.autumn.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-temple" onClick={() => handleUpdate(texture.temple.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-stamp-collection" onClick={() => handleUpdate(texture.stampCollection.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-death-star" onClick={() => handleUpdate(texture.deathStar.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-church-on-sunday" onClick={() => handleUpdate(texture.churchOnSunday.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-overlapping-hexagons" onClick={() => handleUpdate(texture.overlappingCircles.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-4-point-stars" onClick={() => handleUpdate(texture.fourPointStars.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-bamboo" onClick={() => handleUpdate(texture.bamboo.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-bathroom-floor" onClick={() => handleUpdate(texture.bathroomFloor.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-cork-screw" onClick={() => handleUpdate(texture.corkScrew.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-happy-intersection" onClick={() => handleUpdate(texture.happyIntersection.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-libson" onClick={() => handleUpdate(texture.libson.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-steel-beams" onClick={() => handleUpdate(texture.steelBeams.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-tiny-checkers" onClick={() => handleUpdate(texture.tinyCheckers.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-x-equals" onClick={() => handleUpdate(texture.xEquals.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-anchors-away" onClick={() => handleUpdate(texture.anchorsAway.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-bevel-circle" onClick={() => handleUpdate(texture.bevelCircle.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-fancy-rectangles" onClick={() => handleUpdate(texture.fancyRectangles.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-heavy-rain" onClick={() => handleUpdate(texture.heavyRain.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-overlapping-circles" onClick={() => handleUpdate(texture.overlappingCircles.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-plus" onClick={() => handleUpdate(texture.plus.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-rounded-plus-connected" onClick={() => handleUpdate(texture.roundedPlusConnected.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-volcano-lamp" onClick={() => handleUpdate(texture.volcanoLamp.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-wiggle" onClick={() => handleUpdate(texture.wiggle.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-bubbles" onClick={() => handleUpdate(texture.bubbles.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-cage" onClick={() => handleUpdate(texture.cage.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-connections" onClick={() => handleUpdate(texture.connections.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-current" onClick={() => handleUpdate(texture.current.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-diagonal-stripes" onClick={() => handleUpdate(texture.diagonalStripes.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-flipped-diamonds" onClick={() => handleUpdate(texture.flippedDiamonds.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-floating-cogs" onClick={() => handleUpdate(texture.floatingCogs.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-glamorous" onClick={() => handleUpdate(texture.glamorous.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-houndstooth" onClick={() => handleUpdate(texture.houndstooth.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-leaf" onClick={() => handleUpdate(texture.leaf.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-moroccan" onClick={() => handleUpdate(texture.moroccan.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-morphing-diamonds" onClick={() => handleUpdate(texture.morphingDiamonds.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-rails" onClick={() => handleUpdate(texture.rails.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-rain" onClick={() => handleUpdate(texture.rain.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-skulls" onClick={() => handleUpdate(texture.skulls.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-squares-in-squares" onClick={() => handleUpdate(texture.squaresInSquares.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-tic-tac-toe" onClick={() => handleUpdate(texture.ticTacToe.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-zig-zag" onClick={() => handleUpdate(texture.zigZag.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-aztec" onClick={() => handleUpdate(texture.aztec.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-bank-note" onClick={() => handleUpdate(texture.bankNote.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-boxes" onClick={() => handleUpdate(texture.boxes.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-circles-and-squares" onClick={() => handleUpdate(texture.circlesAndSquares.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-circuit-board" onClick={() => handleUpdate(texture.circuitBoard.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-curtain" onClick={() => handleUpdate(texture.curtain.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-diagonal-lines" onClick={() => handleUpdate(texture.diagonalLines.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-endless-clouds" onClick={() => handleUpdate(texture.endlessClouds.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-eyes" onClick={() => handleUpdate(texture.eyes.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-floor-tile" onClick={() => handleUpdate(texture.floorTile.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-groovy" onClick={() => handleUpdate(texture.groovy.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-intersecting-cirles" onClick={() => handleUpdate(texture.intersectingCirles.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-melt" onClick={() => handleUpdate(texture.melt.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-overlapping-diamonds" onClick={() => handleUpdate(texture.overlappingDiamonds.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-parkay-floor" onClick={() => handleUpdate(texture.parkayFloor.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-pixel-dots" onClick={() => handleUpdate(texture.pixelDots.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-polka-dots" onClick={() => handleUpdate(texture.polkaDots.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-signal" onClick={() => handleUpdate(texture.signal.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-slanted-stars" onClick={() => handleUpdate(texture.slantedStars.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-wallpaper" onClick={() => handleUpdate(texture.wallpaper.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-dominos" onClick={() => handleUpdate(texture.dominos.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-architect" onClick={() => handleUpdate(texture.architect.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-cutout" onClick={() => handleUpdate(texture.cutout.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-overcast" onClick={() => handleUpdate(texture.overcast.backgroundImage)}></svg>
+        <svg className="texture-item svg-texture-jigsaw" onClick={() => handleUpdate(texture.jigsaw.backgroundImage)}></svg>
+    </div>);
+}

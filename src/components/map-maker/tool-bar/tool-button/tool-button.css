@@ -1,0 +1,58 @@
+.tool-button{
+    width:60px;
+    height:60px;
+    border-radius:30px;
+    background: #cfd8dc;
+    transition:all .3s;
+    margin:10px;
+    cursor:pointer;
+}
+.tool-button i {
+    width: 100%;
+    text-align: center;
+    font-size: 2.2em;
+    color: #3A4950;
+    margin-top: 12.25px;
+}
+.tool-button:hover, .tool-hover{
+    background:#F78E1E;
+    transform:rotate(90deg);
+    box-shadow: 0 0 15px #222;
+}
+#tool-mountain i{
+    font-size:1.9em;
+    transform:translateX(1px)
+}
+#tool-river {
+    transform:rotate(90deg);
+}
+#tool-river:hover {
+    transform:rotate(180deg);
+    /* transform:rotate(180deg) !important; */
+}
+@media only screen and (max-height: 600px) {
+    .tool-button {
+        width:40px;
+        height:40px;
+        border-radius:20px;
+        margin:5px;
+    }
+    .tool-button i {
+        font-size: 1.6em;
+        margin-top: 7.5px;
+    }
+}
+.disabled-button{
+    background-color:#222;
+    transform: none !important;
+    cursor: no-drop;
+    color:#aaa;
+}
+.disabled-button i {
+    color:#aaa;
+}
+.disabled-button:hover{
+    background:#222 !important;
+    transform:none !important;
+    box-shadow:none !important;
+}

@@ -1,0 +1,14 @@
+#tool-bar{
+  flex:1;
+  min-width: 80px;
+  max-width: 80px;
+  background: #37474f;
+  transition:all .3s;
+}
+
+@media only screen and (max-height: 600px) {
+    #tool-bar {
+      min-width: 50px;
+      max-width: 50px;
+    }
+}

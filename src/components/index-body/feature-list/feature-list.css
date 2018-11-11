@@ -1,0 +1,28 @@
+.features {
+    column-count: 3;
+    text-decoration: none;
+    list-style: none;
+    margin: auto;
+    color: #eee;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    width:100%;
+}
+.features li {
+    min-width: 33.3333333333%;
+    max-width: 33.3333333333%;
+    flex:1;
+    text-align: center;
+}
+.fl-heading {
+    width:100%;
+    background: #3A4950;
+    text-align:center;
+    color:#F78D23;
+    margin:0;
+    font-size:3em;
+}
+.padding-bottom-2 {
+    padding-bottom:15px;
+}

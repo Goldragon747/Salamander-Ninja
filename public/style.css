@@ -1,0 +1,62 @@
+@import url('href="https://fonts.googleapis.com/css?family=Knewave"');
+/* body {
+    overflow:hidden;
+} */
+.sn_animated {
+    opacity: 0;
+    animation: sn_anim_opacity .5s paused;
+    -webkit-animation: sn_anim_opacity .5s paused;
+}
+#sn_x_fill {
+    animation:sn_anim_red_x 2s paused;
+    -webkit-animation:sn_anim_red_x 2s paused;
+}
+#sn_body, #sn_headgear, #sn_title_1, #sn_title_2, #sn_slogan {
+    opacity: 0;
+    animation: sn_anim_opacity 1s paused;
+    -webkit-animation: sn_anim_opacity 1s paused;
+}
+#main-container {
+    opacity: 0;
+    width:100%;
+    display:none;
+    animation: sn_anim_opacity 1.5s paused;
+}
+#sn_loadsvg {
+    animation: sn_anim_opacity_out 1.5s 2.5s;
+    width:100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.sn_orange_fill{fill:#F78E1E;}
+.sn_blue_fill{fill:#263238;}
+.sn_font_size_1{font-size:125px;}
+.sn_font_size_2{font-size:72px;}
+
+@keyframes sn_anim_opacity {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@keyframes sn_anim_opacity_out {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+@keyframes sn_anim_red_x {
+    from {
+        fill:#D50000;
+    }
+    to {
+        fill: #263238;
+    }
+}
+

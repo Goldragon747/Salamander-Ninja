@@ -1,0 +1,13 @@
+#logo{
+    enable-background:new 0 0 500 500;
+    height: 60px;
+    margin-left: 9px;
+    display: inline-block;
+    animation:spin 10s infinite cubic-bezier(0.68, 0, 0.37, 0.99);
+}
+.st0{
+    fill:#F78E1E;
+}
+.st1{
+    fill:#263238;
+}
