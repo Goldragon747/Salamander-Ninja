@@ -21,7 +21,22 @@ let currentTool = "select";
 window.onload = () => {
     draw = SVG('svgjs-canvas');
 }
-
+var elementId = 0;
+const AddToSVGJSCanvas = element => {
+    element = element.replace(/[ ]/, ` id="svgjs_element_${++elementId}"`)
+    draw.svg(element);
+    var newElement = SVG.get(`svgjs_element_${elementId}`);
+    newElement.click( e => {
+        turnOnEditMode(e.target);
+        e.target.remove();
+    });
+    // var pattern = draw.pattern(20, 20, function(add) {
+    //     add.rect(20,20).fill('#f06')
+    //     add.rect(10,10)
+    //     add.rect(10,10).move(10,10)
+    //   })
+    // newElement.attr({ fill: pattern })
+}
 
 
 

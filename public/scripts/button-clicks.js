@@ -18,6 +18,7 @@ const RemoveHovers = () => {
 
 selectButton.addEventListener("click", evt => {
     ToolButtonPreEvents("select",false);
+    document.getElementById("map-canvas").style.display = "none";
     selectButton.classList.add("tool-hover");
 });
 
@@ -62,7 +63,19 @@ roadButton.addEventListener("click", evt => {
     roadButton.classList.add("tool-hover");
 });
 
-const ToolButtonPreEvents = (label, stop = true) => {
+const ToolButtonPreEvents = label => {
+    console.log(editing)
+    if(editing){
+        turnOffEditMode();
+    }
     RemoveHovers();
     currentTool = label;
+    document.getElementById("map-canvas").style.display = "block";
+}
+function manualSelectToolOverride(){
+    ToolButtonPreEvents("select");
+    selectButton.classList.add("tool-hover");
+    document.getElementById("state-changer-input").value = "select";
+    document.getElementById("state-changer").click();
+    document.getElementById("map-canvas").style.display = "none";
 }
