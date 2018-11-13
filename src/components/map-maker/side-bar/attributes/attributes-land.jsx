@@ -7,8 +7,9 @@ class AttributesLand extends Component{
             borderValue: 0,
             sliderValue:0,
             textures:false,
-            backgroundImage:"none"
+            backgroundImage:"none",
         }
+        this.onSubmit = this.onSubmit.bind(this);  
     }
     borderChange(event){
         const inputBorder = event.target.value
@@ -70,6 +71,12 @@ class AttributesLand extends Component{
             backgroundImage: texture
         })
     }
+    onSubmit(event) {
+        event.preventDefault();
+        this.setState({
+            borderValue: parseInt(document.getElementById("border-state-changer-input").value)
+        })
+    }
     render(){
         var updater = this.changeTexture;
         let textures = this.state.textures ? <div className="dropdown-list"><Textures update={updater.bind(this)} /></div> : "";
@@ -97,12 +104,17 @@ class AttributesLand extends Component{
         let borderID = this.props.select ? "select-land-border-size-input" : "land-border-size-input";
         let borderFillID = this.props.select ? "select-land-border-fill-input" : "land-border-fill-input";
         let textureFillID = this.props.select ? "select-land-texture-fill-input" : "land-texture-fill-input";
+        let containerID = this.props.select ? "select-land-container" : "land-container";
         return (
-            <div>
+            <div id={containerID}>
+                <form onSubmit={this.onSubmit} style={{display:"none"}}>
+                    <input type="text" id="border-state-changer-input" onChange={event => this.setState({ value: event.target.value })}></input>
+                    <input type="submit" id="border-state-changer"></input>
+                </form>
                  <div className="attribute-items">
                      <div className="attribute-row">
-                         <label>Fill <i className="fas fa-question-circle"><div className="help">{tip}{fillText}</div></i></label>
-                         <input id={fillID} type="color" value="#000" readOnly></input>
+                         <label>Color <i className="fas fa-question-circle"><div className="help">{tip}{fillText}</div></i></label>
+                         <input id={fillID} type="color"></input>
                      </div>
                      <div className="attribute-row">
                          <label>Border Size <i className="fas fa-question-circle"><div className="help">{tip}{borderSizeText}</div></i></label>
@@ -117,7 +129,7 @@ class AttributesLand extends Component{
                          </div>
                      </div>
                      <div className="attribute-row">
-                         <label>Border Fill <i className="fas fa-question-circle"><div className="help">{tip}{borderFillText}</div></i></label>
+                         <label>Border Color <i className="fas fa-question-circle"><div className="help">{tip}{borderFillText}</div></i></label>
                          <input id={borderFillID} type="color" value="#000" readOnly></input>
                      </div>
                      <div className="attribute-row">

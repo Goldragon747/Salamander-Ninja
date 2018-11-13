@@ -19,9 +19,9 @@ class SideBar extends Component{
     let textToolUIDiplay = this.props.tool == "text" ? {display:"flex"}: {display:"none"};
 
     let mapToolUIDiplay = this.props.tool == "map" ? {display:"flex"}: {display:"none"};
-    const script = document.createElement("script");
-    script.setAttribute("src","/scripts/spectrum-config.js");
-    document.head.appendChild(script);
+    // const script = document.createElement("script");
+    // script.setAttribute("src","/scripts/spectrum-config.js");
+    // document.head.appendChild(script);
     return (
     <div id="side-bar">
         <SelectTool styleProp={selectUIDiplay} />

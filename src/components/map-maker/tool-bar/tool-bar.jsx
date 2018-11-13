@@ -30,8 +30,8 @@ class ToolBar extends Component {
     return (
       <div id="tool-bar">
         <form onSubmit={this.onSubmit} style={{display:"none"}}>
-          <input type="text" id="state-changer-input" onChange={event => this.setState({ value: event.target.value })}></input>
-          <input type="submit" id="state-changer"></input>
+          <input type="text" id="hover-state-changer-input" onChange={event => this.setState({ value: event.target.value })}></input>
+          <input type="submit" id="hover-state-changer"></input>
         </form>
         <ToolButton click={this.props.changeToolSelect} toolName="tool-select" icon="fas fa-location-arrow" isHovered={this.state.isHovered} />
         <ToolButton click={this.props.changeToolLand} toolName="tool-land" icon="fas fa-globe-americas" />

@@ -92,10 +92,13 @@ class AttributesText extends Component{
         let tip = <span className="help-tip">Tip: </span>;
 
         let fillID = this.props.select ? "select-text-fill-input" : "text-fill-input";
-        let borderFillID = this.props.select ? "select-text-border-fill-input" : "text-border-fill-input";
-        let textureFillID = this.props.select ? "select-text-texture-fill-input" : "text-texture-fill-input";
+        let sizeID = this.props.select ? "select-text-size-input" : "text-size-input";
+        let fontDropdownID = this.props.select ? "select-text-font-dropdown" : "text-font-dropdown";
+        let fontID = this.props.select ? "select-font-value" : "font-value";
+        
+        let containerID = this.props.select ? "select-text-container" : "text-container";
         return (
-            <div>
+            <div id={containerID}>
                  <div className="attribute-items">
                      <div className="attribute-row">
                          <label>Text Color <i className="fas fa-question-circle"><div className="help">{tip}{colorText}</div></i></label>
@@ -103,7 +106,7 @@ class AttributesText extends Component{
                      </div>
                      <div className="attribute-row">
                          <label>Text Size <i className="fas fa-question-circle"><div className="help">{tip}{sizeText}</div></i></label>
-                         <input id="text-size-input" className="attribute-input-number" type="text" value={this.state.sizeValue} onChange={this.sizeChange.bind(this)}></input>
+                         <input id={sizeID} className="attribute-input-number" type="text" value={this.state.sizeValue} onChange={this.sizeChange.bind(this)}></input>
                          <div className="value-changer-container">
                              <div className="value-changer-up" onClick={this.sizeChangeUp.bind(this)}>
                                  <i className="fas fa-sort-up"></i>
@@ -115,8 +118,8 @@ class AttributesText extends Component{
                      </div>
                      <div className="attribute-row">
                          <label>Text Font <i className="fas fa-question-circle"><div className="help">{tip}{fontText}</div></i></label>
-                         <div id="text-font-dropdown" className="dropdown-display" onClick={this.fontClicked.bind(this)}>
-                             <span id="font-value" className={"font-display " + this.state.fontClass}>{this.state.fontName}</span>
+                         <div id={fontDropdownID} className="dropdown-display" onClick={this.fontClicked.bind(this)}>
+                             <span id={fontID} className={"font-display " + this.state.fontClass}>{this.state.fontName}</span>
                              {fonts}
                          </div>
                      </div>

@@ -1,5 +1,5 @@
 var path,segment,text,isEditing,startingText;
-var somethingSelected;
+window.somethingSelected = undefined;
 var offsetX = offsetY = 0;
 var movePath = false;
 var hitOptions = {
@@ -77,6 +77,7 @@ function onKeyDown(event) {
     //delete
     if(event.key == "delete" || event.key == "backspace"){
         deleteSelectedObject();
+        turnOffEditMode();
     }
 	switch(currentTool){
         case "select":
@@ -118,13 +119,6 @@ function onKeyDown(event) {
 //---------------------------------------------------------------------------------------------------------------------------------------------------//
 function onMouseDownSelect(event){
     if(event.item){
-        // if(event.item == somethingSelected){
-        //     somethingSelected = null;
-        // }else {
-        //     project.activeLayer.selected = false;
-        //     event.item.selected = true;
-        //     somethingSelected = event.item;
-        // }
         segment = path = text = null;
         var hitResult = project.hitTest(event.point, hitOptions);
         
@@ -165,7 +159,18 @@ function deleteSelectedObject(){
         somethingSelected = undefined;
     }
 }
-
+window.setSelectFill = function(color){
+    var fillObj = color.toRgb();
+    window.somethingSelected.fillColor = new Color(fillObj.r/255,fillObj.g/255,fillObj.b/255,fillObj.a);
+}
+window.setSelectBorderFill = function(color){
+    var fillObj = color.toRgb();
+    window.somethingSelected.strokeColor = new Color(fillObj.r/255,fillObj.g/255,fillObj.b/255,fillObj.a);
+}
+window.setSelectTextFill = function(color){
+    var fillObj = color.toRgb();
+    window.somethingSelected.fillColor = new Color(fillObj.r/255,fillObj.g/255,fillObj.b/255,fillObj.a);
+}
 //---------------------------------------------------------------------------------------------------------------------------------------------------//
 //                                                                                                                                                   //
 //                                                                      LAND                                                                         //
@@ -191,20 +196,25 @@ function onMouseUpLand(event){
     path.simplify(2);
     path.closed = true;
     path.smooth();
-    var fillObj = getLandFillInput();
-    var strokeObj = getLandBorderInput();
+    var fillObj = currentLandColor;
+    var strokeObj = currentLandBorderColor;
     var strokeWidth = document.getElementById("land-border-size-input").value;
     if( strokeWidth == 0){
+        strokeObj.r = 0;
+        strokeObj.g = 0;
+        strokeObj.b = 0;
         strokeObj.a = 0.00001;
         strokeWidth = 10;
     }
+    
     path.style = {
         fillColor: new Color(fillObj.r/255,fillObj.g/255,fillObj.b/255,fillObj.a),
         strokeColor: new Color(strokeObj.r/255,strokeObj.g/255,strokeObj.b/255,strokeObj.a),
         strokeWidth: strokeWidth
     }
-    var exportPath = path.exportSVG({asString:true});
-    AddToSVGJSCanvas(exportPath);
+    somethingSelected = path;
+    exportToSVG();
+    console.log(somethingSelected.strokeWidth)
     path.remove();
     if(autoselect){
         manualSelectToolOverride();
@@ -220,7 +230,6 @@ function onMouseUpLand(event){
 
 function onMouseDownText(event){
     var hitResult = project.hitTest(event.point, hitOptions);
-            console.log(hitResult)
             if (hitResult) {
                 text = hitResult.item;
                 isEditing = true;
@@ -239,7 +248,6 @@ function onMouseDownText(event){
                         content: 'untitled',
                         fillColor: new Color(fillObj.r/255,fillObj.g/255,fillObj.b/255,fillObj.a),
                         fontFamily: document.getElementById("font-value").innerHTML,
-                        // fontWeight: 'bold',
                         fontSize: document.getElementById("text-size-input").value,
                         selected: false,
                         visible: false,
@@ -247,13 +255,13 @@ function onMouseDownText(event){
                         onMouseEnter: onTextMouseEnter,
                         onMouseLeave: onTextMouseLeave,
                     });
-                    somethingSelected = text;
                     if(textEditor.getAttribute("class")){
                         textEditor.removeAttribute("class");
                     }
+                    somethingSelected = text;
                     textEditor.classList.add(document.getElementById("font-value").classList[1]);
                     textEditor.style.fontSize = document.getElementById("text-size-input").value * 0.74 + "pt";
-                    textEditor.style.color = fillObj;
+                    textEditor.style.color = "rgba("+ fillObj.r + ", " + fillObj.g + ", " + fillObj.b + ", " + fillObj.a + ")";
                     startingText = text.content;
                     var verticalPadding = 1,
                     left = (text.position.x-text.bounds.width/2) - (offsetX),
@@ -265,6 +273,7 @@ function onMouseDownText(event){
                     textEditor.innerHTML = text.content;
                     textEditor.style.display = "block";
                     textEditor.focus();
+                    
                 }
             }
 }
@@ -281,7 +290,7 @@ var onTextMouseLeave = function(){
 }
 var onTextClick = function(event){
     isEditing = true;
-    startingText = text.content;
+    startingText = somethingSelected.content;
     var verticalPadding = 1,
         left = somethingSelected.position.x - somethingSelected.bounds.width/2 - (offsetX),
         top = somethingSelected.position.y - somethingSelected.bounds.height/2 + verticalPadding - (offsetY),
@@ -291,9 +300,22 @@ var onTextClick = function(event){
     textEditor.style.left = left + "px";
     textEditor.style.maxHeight = maxHeight + "px";
     textEditor.style.maxWidth = maxWidth + "px";
+    if(editing){
+        fillObj = getSelectTextStrokeInput();
+        textEditor.classList.add(document.getElementById("select-font-value").classList[1]);
+        textEditor.style.fontSize = somethingSelected.fontSize * 0.74 + "pt";
+        textEditor.style.color = "rgba("+ fillObj.r + ", " + fillObj.g + ", " + fillObj.b + ", " + fillObj.a + ")";
+    } else {
+        fillObj = getTextStrokeInput();
+        textEditor.classList.add(document.getElementById("font-value").classList[1]);
+        textEditor.style.fontSize = document.getElementById("text-size-input").value * 0.74 + "pt";
+        textEditor.style.color = "rgba("+ fillObj.r + ", " + fillObj.g + ", " + fillObj.b + ", " + fillObj.a + ")";
+    }
+    
     if(textEditor.innerHTML != ""){
         textEditor.innerHTML = somethingSelected.content;
-        somethingSelected.visible=false;
+        somethingSelected.visible = false;
+        somethingSelected.selected = false;
         paper.view.draw();
         textEditor.style.display = "block";
         textEditor.focus();
@@ -301,6 +323,7 @@ var onTextClick = function(event){
 }
 
 var updateCanvas = function(){
+    console.log("called update canvas")
     textEditor.style.display = "none";
     if(textEditor.innerHTML && somethingSelected){
         somethingSelected.content = textEditor.innerHTML.replace(/&nbsp;/g," ");
@@ -310,8 +333,7 @@ var updateCanvas = function(){
     paper.view.draw();
     isEditing = false;
     if(!editing && somethingSelected){
-        var exportPath = somethingSelected.exportSVG({asString:true});
-        AddToSVGJSCanvas(exportPath);
+        exportToSVG();
         somethingSelected.remove();
         somethingSelected = undefined;
         if(autoselect){
@@ -359,6 +381,7 @@ document.getElementById("download-png").addEventListener("click",function(event)
 //                                                                                                                                                   //
 //---------------------------------------------------------------------------------------------------------------------------------------------------//
 window.editing = false;
+var interval;
 window.turnOnEditMode = function(element) {
     document.getElementById("map-canvas").style.display = "block";
     // if(document.getElementById("map-canvas").classList.contains("ignore-pointer-events")){
@@ -367,11 +390,28 @@ window.turnOnEditMode = function(element) {
     document.getElementById("canvas-overlay").style.display = "block";
     somethingSelected = project.importSVG(element);
     if(somethingSelected.constructor.name === "PointText"){
-        this.console.log("here")
         somethingSelected.onClick = onTextClick;
     }
     somethingSelected.selected = true;
     editing = true;
+    updateSelectTool();
+    interval = setInterval(function(){
+        if(somethingSelected.constructor.name == "Path"){
+            if(document.getElementById("select-land-border-size-input").value != 0){
+                somethingSelected.strokeWidth = document.getElementById("select-land-border-size-input").value;
+                var colorObj = getSelectLandBorderInput();
+                somethingSelected.strokeColor = new Color(colorObj.r/255,colorObj.g/255,colorObj.b/255,colorObj.a);
+            } else {
+                somethingSelected.strokeWidth = 10;
+                somethingSelected.strokeColor = new Color(0,0,0,0.00001);
+            }
+        } else if(somethingSelected.constructor.name == "PointText"){
+            
+            somethingSelected.fontFamily = document.getElementById("select-font-value").innerHTML;
+            somethingSelected.fontSize = document.getElementById("select-text-size-input").value;
+        }
+        
+    },1);
 }
 window.turnOffEditMode = function(){
     if(isEditing){
@@ -379,8 +419,7 @@ window.turnOffEditMode = function(){
     }
     if(somethingSelected){
         somethingSelected.selected = false;
-        var exportPath = somethingSelected.exportSVG({asString:true});
-        AddToSVGJSCanvas(exportPath);
+        exportToSVG();
     }
     for (var i = 0; i < project.activeLayer.children.length; i++) {
         project.activeLayer.children[i].remove();
@@ -389,4 +428,17 @@ window.turnOffEditMode = function(){
     // document.getElementById("map-canvas").classList.add("ignore-pointer-events");
     document.getElementById("canvas-overlay").style.display = "none";
     editing = false;
+    somethingSelected = undefined;
+    currentSVG = undefined;
+    updateSelectTool();
+    clearInterval(interval);
+}
+
+function exportToSVG(){
+    if(somethingSelected.constructor.name == "Path" && somethingSelected.strokeColor.alpha == 0.00001){
+        somethingSelected.strokeColor = "#000"
+        somethingSelected.strokeWidth = 0;
+    }
+    var exportPath = somethingSelected.exportSVG({asString:true});
+    AddToSVGJSCanvas(exportPath);
 }
