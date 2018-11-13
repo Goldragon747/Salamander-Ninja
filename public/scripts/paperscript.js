@@ -130,18 +130,13 @@ function onMouseDownSelect(event){
         }
         
         if (hitResult) {
-            
-            if(hitResult.item.constructor.name == "PointText"){
-                text = hitResult.item;
-            } else {
-                path = hitResult.item;
-                if (hitResult.type == 'segment') {
-                    segment = hitResult.segment;
-                } else if (hitResult.type == 'stroke') {
-                    var location = hitResult.location;
-                    segment = path.insert(location.index + 1, event.point);
-                    path.smooth();
-                }
+            somethingSelected = hitResult.item;
+            if (hitResult.type == 'segment') {
+                segment = hitResult.segment;
+            } else if (hitResult.type == 'stroke') {
+                var location = hitResult.location;
+                segment = somethingSelected.insert(location.index + 1, event.point);
+                somethingSelected.smooth();
             }
         }
         movePath = hitResult.type == 'fill';
@@ -289,6 +284,7 @@ var onTextMouseLeave = function(){
     canvas.style.cursor = 'crosshair';
 }
 var onTextClick = function(event){
+    console.log("on text click")
     isEditing = true;
     startingText = somethingSelected.content;
     var verticalPadding = 1,

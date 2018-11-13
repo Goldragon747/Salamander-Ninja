@@ -99,7 +99,6 @@ function manualSelectToolOverride(){
 var elementId = 0;
 
 const AddToSVGJSCanvas = element => {
-    console.log("after turned into string", element)
     element = element.replace(/[ ]/, ` id="svgjs_element_${++elementId}"`)
     draw.svg(element);
     var newElement = SVG.get(`svgjs_element_${elementId}`);
@@ -146,7 +145,6 @@ updateSelectTool = () => {
     removeSelectToolUI();
     if(currentSVG){
         let element = SVG.get(currentSVG.getAttribute("id"));
-        console.log(element)
         if(somethingSelected.constructor.name === "PointText"){
             selectUI.text.style.display = "block";
             
