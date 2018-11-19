@@ -36,6 +36,9 @@ $(document).ready(function() {
     };
     // LAND
     $("#land-fill-input").spectrum(options);
+    $("#land-fill-input").on("move.spectrum", (e,color) => {
+        window.currentLandColor = color.toRgb();
+    });
     changeLandFillInput = color => {
         $("#land-fill-input").spectrum("set", color);
     }
@@ -49,6 +52,9 @@ $(document).ready(function() {
         return $("#land-fill-input").spectrum("get").toRgb();
     }
     $("#land-border-fill-input").spectrum(options);
+    $("#land-border-fill-input").on("move.spectrum", (e,color) => {
+        window.currentLandBorderColor = color.toRgb();
+    });
     changeLandBorderInput = color => {
         $("#land-border-fill-input").spectrum("set", color);
     }
@@ -62,7 +68,9 @@ $(document).ready(function() {
         return $("#land-border-fill-input").spectrum("get").toRgb();
     }
     $("#land-texture-fill-input").spectrum(options);
-    
+    $("#land-texture-fill-input").on("move.spectrum", (e,color) => {
+        window.currentLandTextureColor = color.toRgb();
+    });
     changeLandTextureInput = color => {
         $("#land-texture-fill-input").spectrum("set", color);
     }
@@ -79,6 +87,9 @@ $(document).ready(function() {
     
     // LAND SELECT
     $("#select-land-fill-input").spectrum(options);
+    $("#select-land-fill-input").on("move.spectrum", (e,color) => {
+        window.setSelectFill(color);
+    });
     changeSelectLandFillInput = color => {
         $("#select-land-fill-input").spectrum("set", color);
     }
@@ -92,6 +103,9 @@ $(document).ready(function() {
         return $("#select-land-fill-input").spectrum("get").toRgb();
     }
     $("#select-land-border-fill-input").spectrum(options);
+    $("#select-land-border-fill-input").on("move.spectrum", (e,color) => {
+        window.setSelectBorderFill(color);
+    });
     changeSelectLandBorderInput = color => {
         $("#select-land-border-fill-input").spectrum("set", color);
     }
@@ -121,6 +135,9 @@ $(document).ready(function() {
     
     // TEXT
     $("#text-fill-input").spectrum(options);
+    $("#text-fill-input").on("move.spectrum", (e,color) => {
+        window.setSelectTextFill(color);
+    });
     changeTextStrokeInput = color => {
         $("#text-fill-input").spectrum("set", color);
     }
@@ -136,7 +153,10 @@ $(document).ready(function() {
     
     
     // TEXT SELECT
-    $("#text-land-fill-input").spectrum(options);
+    $("#select-text-fill-input").spectrum(options);
+    $("#select-text-fill-input").on("move.spectrum", (e,color) => {
+        window.setSelectTextFill(color);
+    });
     changeSelectTextStrokeInput = color => {
         $("#select-text-fill-input").spectrum("set", color);
     }

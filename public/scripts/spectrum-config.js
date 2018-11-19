@@ -135,6 +135,9 @@ $(document).ready(function() {
     
     // TEXT
     $("#text-fill-input").spectrum(options);
+    $("#text-fill-input").on("move.spectrum", (e,color) => {
+        window.setSelectTextFill(color);
+    });
     changeTextStrokeInput = color => {
         $("#text-fill-input").spectrum("set", color);
     }

@@ -7,6 +7,7 @@ class AttributesLand extends Component{
             borderValue: 0,
             sliderValue:0,
             textures:false,
+            textureName:"none",
             backgroundImage:"none",
         }
         this.onSubmit = this.onSubmit.bind(this);  
@@ -68,7 +69,8 @@ class AttributesLand extends Component{
     }
     changeTexture(texture){
         this.setState({
-            backgroundImage: texture
+            backgroundImage: texture.backgroundImage,
+            textureName: texture.name
         })
     }
     onSubmit(event) {
@@ -105,12 +107,14 @@ class AttributesLand extends Component{
         let borderFillID = this.props.select ? "select-land-border-fill-input" : "land-border-fill-input";
         let textureFillID = this.props.select ? "select-land-texture-fill-input" : "land-texture-fill-input";
         let containerID = this.props.select ? "select-land-container" : "land-container";
+        let textureContainerID = this.props.select ? "select-texture-row" : "texture-row";
+        let form = this.props.select ?  <form onSubmit={this.onSubmit} style={{display:"none"}}>
+                                            <input type="text" id="border-state-changer-input"></input>
+                                            <input type="submit" id="border-state-changer"></input>
+                                        </form> : "";
         return (
             <div id={containerID}>
-                <form onSubmit={this.onSubmit} style={{display:"none"}}>
-                    <input type="text" id="border-state-changer-input" onChange={event => this.setState({ value: event.target.value })}></input>
-                    <input type="submit" id="border-state-changer"></input>
-                </form>
+                {form}
                  <div className="attribute-items">
                      <div className="attribute-row">
                          <label>Color <i className="fas fa-question-circle"><div className="help">{tip}{fillText}</div></i></label>
@@ -132,15 +136,15 @@ class AttributesLand extends Component{
                          <label>Border Color <i className="fas fa-question-circle"><div className="help">{tip}{borderFillText}</div></i></label>
                          <input id={borderFillID} type="color" value="#000" readOnly></input>
                      </div>
-                     <div className="attribute-row">
-                         <label className="disabled">Texture <i className="fas fa-question-circle"><div className="help">{tip}{textureText}</div></i></label>
-                         <div id="land-texture-dropdown" className="dropdown-display" style={{backgroundImage:this.state.backgroundImage}} onClick={this.texturesClicked.bind(this)}>
+                     <div className="attribute-row" id={textureContainerID}>
+                         <label>Texture <i className="fas fa-question-circle"><div className="help">{tip}{textureText}</div></i></label>
+                         <div id="land-texture-dropdown" name={this.state.textureName} className="dropdown-display" style={{backgroundImage:this.state.backgroundImage}} onClick={this.texturesClicked.bind(this)}>
                              {textures}
                          </div>
                      </div>
                      <div className="attribute-row">
-                         <label className="disabled">Texture Color <i className="fas fa-question-circle"><div className="help">{tip}{textureColorText}</div></i></label>
-                         <input id={textureFillID} disabled type="color" value="#000" readOnly></input>
+                         <label>Texture Color <i className="fas fa-question-circle"><div className="help">{tip}{textureColorText}</div></i></label>
+                         <input id={textureFillID} type="color" value="#000" readOnly></input>
                      </div>
                      <div className="attribute-row">
                          <label className="disabled">Landify <i className="fas fa-question-circle"><div className="help">{tip}{landifyText}</div></i></label>

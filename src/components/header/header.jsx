@@ -18,12 +18,12 @@ export default props => {
   }
   return (
       <header className="main-header">
-        <a className="main-header-a">
-          <Logo />
-          <div className="main-title">
-            <h1>Salamander<span>.</span>Ninja</h1>
-            <h2>The Agile World Fabricator</h2>
-          </div>
+        <a href="/" className="main-header-a">
+            <Logo />
+            <div className="main-title">
+              <h1>Salamander<span>.</span>Ninja</h1>
+              <h2>The Agile World Fabricator</h2>
+            </div>
         </a>
         {navLinks}
       </header>

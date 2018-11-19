@@ -10,6 +10,7 @@ class AttributesText extends Component{
             fontClass:"font-mukta",
             sizeValue: 12,
         }
+        this.onSubmit = this.onSubmit.bind(this);  
     }
     fontClicked(event){
         let prevState = this.state.fonts;
@@ -77,6 +78,14 @@ class AttributesText extends Component{
             }
         }
     }
+    onSubmit(event) {
+        event.preventDefault();
+        this.setState({
+            fontName: document.getElementById("text-font-state-changer-input").value,
+            fontClass: document.getElementById("text-font-class-state-changer-input").value,
+            sizeValue: parseInt(document.getElementById("text-size-state-changer-input").value),
+        })
+    }
     render(){
         var updater = this.changeFont;
         let fonts = this.state.fonts ? <div className="dropdown-list"><Fonts update={updater.bind(this)} /></div> : "";
@@ -95,10 +104,16 @@ class AttributesText extends Component{
         let sizeID = this.props.select ? "select-text-size-input" : "text-size-input";
         let fontDropdownID = this.props.select ? "select-text-font-dropdown" : "text-font-dropdown";
         let fontID = this.props.select ? "select-font-value" : "font-value";
-        
         let containerID = this.props.select ? "select-text-container" : "text-container";
+        let form = this.props.select ?  <form onSubmit={this.onSubmit} style={{display:"none"}}>
+                                            <input type="text" id="text-size-state-changer-input"></input>
+                                            <input type="text" id="text-font-state-changer-input"></input>
+                                            <input type="text" id="text-font-class-state-changer-input"></input>
+                                            <input type="submit" id="text-state-changer"></input>
+                                        </form> : "";
         return (
             <div id={containerID}>
+                {form}
                  <div className="attribute-items">
                      <div className="attribute-row">
                          <label>Text Color <i className="fas fa-question-circle"><div className="help">{tip}{colorText}</div></i></label>
