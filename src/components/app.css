@@ -103,6 +103,14 @@ input[type="week" i]:disabled, .sp-disabled {
 .disabled {
   color:#aaa;
 }
+#sn_loadsvg {
+  display:none;
+}
+#main-container {
+  display:flex;
+  opacity:1;
+  animation-play-state:running;
+}
 @keyframes spin{
   from {
     transform: unset;

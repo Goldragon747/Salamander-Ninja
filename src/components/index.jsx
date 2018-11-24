@@ -13,16 +13,19 @@ class Index extends Component {
     fetch("/users/isloggedin")
       .then(res => res.json())
       .then(userLoggedIn => this.setState({ userLoggedIn }));
+      const script = document.createElement("script");
+
+      script.src = "/scripts/splashscreen.js";
+      script.async = true;
+
+      document.body.appendChild(script);
   }
-  
   render() {
     return (
       <div id="main-container">
-        {/* {this.state.users.map(user =>
-          <div key={user.id}>{user.username}</div>
-        )} */}
         <Header LoggedIn={this.state.userLoggedIn.response} />
         <IndexBody />
+        {/* <script src="/scripts/splashscreen.js"></script> */}
       </div>
     );
   }

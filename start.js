@@ -30,6 +30,14 @@ app.set('view engine', 'ejs');
 // app.get('*', (req,res) =>{
 //     res.sendFile(path.join(__dirname+'/build/index.html'));
 // });
+
+const authCheck = (req,res,next) => {
+  if(req.user){
+      next();
+  } else {
+      res.redirect('/login');
+  }
+};
 app.get("/",(req,res) => {
   res.send("fasfasf");
 });
@@ -49,20 +57,14 @@ app.get("/users/isloggedin",(req,res) => {
     }
   );
 });
-// app.get('/app',passport.authenticate("google") , (req,res) => {
-//   res.redirect("/unlock");
-// });
+app.get('/app',authCheck , (req,res) => {
+  res.redirect("/app");
+});
 
 app.get('/loggedin',passport.authenticate("google") , (req,res) => {
   res.redirect("/unlock");
 });
-const authCheck = (req,res,next) => {
-  if(req.user){
-      next();
-  } else {
-      res.redirect('/');
-  }
-};
+
 app.get('/unlock', authCheck ,(req,res) => {
   res.send(req.user);
 });

@@ -7,7 +7,7 @@ class FeatureList extends Component {
     render() {
         let features = [];
         for(let i = 0; i < this.props.features.length; i++ ){
-            features = [...features,<li>
+            features = [...features,<li key={`feature_${i}`}>
                 {this.props.features[i]}
             </li>]
         }
