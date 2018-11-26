@@ -1,12 +1,12 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
-import Home from './components/home.jsx';
+import { BrowserRouter, Link, Route } from 'react-router-dom';
+import Home from './components/home';
 import * as serviceWorker from './registerServiceWorker';
 
 render((
         <BrowserRouter>
-            <Home/>
+            <Home />
         </BrowserRouter>
     ), document.getElementById('root'));
 

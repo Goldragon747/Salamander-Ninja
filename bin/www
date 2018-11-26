@@ -4,8 +4,8 @@
  * Module dependencies.
  */
 
-var app = require('./start.js');
-var debug = require('debug')('express-react:server');
+var app = require('../app');
+var debug = require('debug')('myapp:server');
 var http = require('http');
 
 /**

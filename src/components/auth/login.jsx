@@ -8,9 +8,9 @@ class Login extends Component {
                 <h2 className="auth-heading">Login</h2>
                 <form className="auth-form">
                     <p className="auth-label">Email</p>
-                    <input type="text" className="auth-field" />
+                    <input type="text" className="auth-field" autoComplete="email" />
                     <p className="auth-label">Password</p>
-                    <input type="text" className="auth-field" />
+                    <input type="text" className="auth-field" autoComplete="current-password" />
                     <div className="auth-row">
                         <div className="auth-col">
                             <p className="auth-label auth-separator">

@@ -8,13 +8,13 @@ class Register extends Component {
                 <h2 className="auth-heading">Register</h2>
                 <form className="auth-form">
                     <p className="auth-label">*Name</p>
-                    <input type="text" className="auth-field" />
+                    <input type="text" className="auth-field" autoComplete="name" />
                     <p className="auth-label">*Email</p>
-                    <input type="text" className="auth-field" />
+                    <input type="text" className="auth-field" autoComplete="email" />
                     <p className="auth-label">*Password</p>
-                    <input type="text" className="auth-field" />
+                    <input type="text" className="auth-field" autoComplete="new-password" />
                     <p className="auth-label">*Confirm Password</p>
-                    <input type="text" className="auth-field" />
+                    <input type="text" className="auth-field" autoComplete="new-password" />
                     <input type="submit" className="auth-submit" value="Create Account" />
                 </form>
                 <p className="auth-label auth-newuser">Already have an account? <a className="auth-a" href="/login" >Login here.</a></p>
