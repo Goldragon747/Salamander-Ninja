@@ -1,7 +1,8 @@
 const express = require("express");
 const router = express.Router();
+var keys = require('./config/keys');
 require("dotenv").config();
-const jwt_secret = process.env.JWT_SECRET;
+const jwt_secret = keys.jwt;
 const jwt = require("express-jwt");
 const auth = jwt({
   secret: jwt_secret,

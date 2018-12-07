@@ -3,8 +3,9 @@ mongoose.Promise = global.Promise;
 const crypto = require("crypto");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
-const mongoDB = process.env.MONGODB;
-const jwt_secret = process.env.JWT_SECRET;
+var keys = require('./config/keys');
+const mongoDB = keys.mongodb.dbURI;
+const jwt_secret = keys.jwt;
 
 mongoose.connect(mongoDB);
 mongoose.connection.on("error", err => {
