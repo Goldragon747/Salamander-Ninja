@@ -1,0 +1,63 @@
+.profile-head{
+    font-size: 2.2em;
+    width:100%;
+    text-align: center;
+    margin:25px 0 0 0;
+}
+.profile-map-row {
+    display:flex;
+    width:100%;
+    /* flex-wrap: wrap; */
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.profile-map-container{
+    flex:1;
+    max-width:350px;
+    max-height:280px; 
+    min-width:350px;
+    min-height:280px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 0 10px #aaa;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    margin:25px 20px;
+    cursor: pointer;
+    transition:all .2s;
+
+}
+.profile-map-header{
+    background: #2A353B;
+    color: #eee;
+    text-align: center;
+    font-size: 1.2em;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    transition: all .4s;
+}
+.profile-map-display {
+    margin:0;
+}
+.profile-new-map {
+    display: block;
+    width: fit-content;
+    background:#f78e1e;
+    color: #eee;
+    font-size: 1.2em;
+    padding:15px 50px;
+    border-radius: 10px;
+    border: 3px solid #2A353B;
+    margin:15px auto 5px auto;
+}
+.profile-new-map:hover{
+    color:#eee;
+    background: #2A353B
+}
+.profile-map-container:hover .profile-map-header{
+    background: #f78e1e;
+}
+.profile-map-container:hover {
+    transform: scale(.9)
+}

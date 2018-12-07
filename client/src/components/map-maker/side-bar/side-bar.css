@@ -1,0 +1,27 @@
+#side-bar {
+  max-width:250px;
+  min-width:250px;
+  background:#eee;
+  padding:0 15px 15px 15px;
+  display:flex;
+  flex-direction:column;
+  overflow: overlay;
+  animation: fade-in 1s;
+}
+#side-bar h3 {
+  margin-top:0;
+}
+#side-bar h3:first-child {
+  margin-top:3px;
+}
+@keyframes fade-in {
+  0%{
+    opacity: 0;
+  }
+  75%{
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,90 @@
+#main-content{
+  width:100%;
+  flex:1;
+  display:flex;
+  flex-direction:row;
+}
+#map-container{
+  flex:1;
+  position: relative;
+}
+#map-canvas {
+  flex:1;
+  background:none;
+  cursor:crosshair;
+  position: absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+}
+#map-canvas:active{
+  cursor:grabbing;
+}
+#svgjs-canvas{
+  flex:1;
+  background:#cfd8dc;
+  position: absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+}
+.svg_select_points {
+  fill:#2A353B;
+}
+.svg_select_points_rot {
+  fill:#F78C28;
+  stroke-width:0;
+  cursor: all-scroll;
+}
+#text-editor{
+  display: none;
+  background:#F78E1E;
+  position: absolute;
+  font-family: 'Courier New';
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 12px;
+  text-align: left;
+  z-index: 10;
+}
+[contenteditable="true"]#text-editor {
+  white-space: nowrap;
+  overflow: hidden;
+} 
+[contenteditable="true"]#text-editor br {
+  display:none;
+
+}
+[contenteditable="true"]#text-editor * {
+  display:inline;
+  white-space:nowrap;
+}
+#text-editor:focus{
+  outline: none;
+}
+.opacity-disabled {
+  opacity:.5;
+  cursor:no-drop !important;
+}
+.ignore-pointer-events{
+  pointer-events: none;
+}
+#canvas-overlay{
+  display: none;
+  opacity: .6;
+  flex:1;
+  position: absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background-color: #666666;
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23000000' fill-opacity='0.4' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E");
+}
+#download-canvas{
+  display:none;
+  width:100%;
+  height:100%;
+}
